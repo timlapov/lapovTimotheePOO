@@ -28,7 +28,7 @@ include_once(__DIR__ . "/block/navbar.php");
             </div>
             <div class="form-group">
                 <label for="price">Prix</label>
-                <input type="number" class="form-control m-3" id="price" name="price" value="<?= htmlspecialchars($moto->getPrice()) ?>" step="0.01" required>
+                <input type="number" class="form-control m-3" id="price" name="price" value="<?= htmlspecialchars($moto->getPrice()) ?>" required>
             </div>
             <div class="form-group">
                 <label for="image">Image (URL)</label>

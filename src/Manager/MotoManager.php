@@ -30,6 +30,22 @@ class MotoManager extends DatabaseManager {
             return null;
         }
     }
+    public function findByType(string $type)
+    {
+        try {
+            $query = $this->getPdo()->prepare("SELECT * FROM moto WHERE type = :type");
+            $query->execute([":type" => $type]);
+            $results = $query->fetchAll(PDO::FETCH_ASSOC);
+            $motos = [];
+            foreach ($results as $result) {
+                $motos[] = Moto::fromArray($result);
+            }
+            return $motos;
+        } catch (PDOException $e) {
+            error_log("PDOException: " . $e->getMessage());
+            return null;
+        }
+    }
     //ADD function
     public function add(Moto $moto): bool
     {
@@ -94,8 +110,7 @@ VALUES (:brand, :model, :type, :price, :image)"
                 //error_log("SQL Error: " . $errorInfo[2]);
                 echo("SQL Error: " . $errorInfo[2]);
             } else {
-                //error_log("City with id $id successfully deleted.");
-                echo("Moto with id $id successfully deleted.");
+                error_log("City with id $id successfully deleted.");
             }
         } catch (PDOException $e) {
             //error_log("PDOException: " . $e->getMessage());

@@ -24,7 +24,6 @@ class MotoController
     // Route: /moto/$id
     public function getById($id)
     {
-        echo "ROUTE: /moto/$id   (getById)";
         $moto = $this->motoManager->findById((int)$id);
         include(__DIR__ . "/../../Templates/moto/details.php");
     }
@@ -32,7 +31,8 @@ class MotoController
     // Route: /moto/$type
     public function getByType($type)
     {
-        echo "ROUTE: /moto/$type   (getByType)";
+        $motos = $this->motoManager->findByType($type);
+        include(__DIR__ . "/../../Templates/moto/index.php");
     }
 
     // Route: /moto/add/
@@ -44,7 +44,6 @@ class MotoController
             $type = $_POST['type'];
             $price = $_POST['price'];
             $image = $_POST['image'];
-
             try {
                 $moto = new Moto($brand, $model, $type, (float)$price, $image, $id);
                 $this->motoManager->add($moto);
@@ -57,7 +56,6 @@ class MotoController
             include(__DIR__ . "/../../Templates/moto/add.php");
         }
     }
-
     // Route: /moto/edit/$id
     public function edit(int $id)
     {
@@ -89,13 +87,12 @@ class MotoController
 
     public function delete($id)
     {
-        echo "ROUTE: /moto/delete/$id   (delete)";
         $moto = $this->motoManager->findById($id);
         try {
             $this->motoManager->deleteById($id);
             include(__DIR__ . "/../../Templates/moto/delete.php");
         } catch(Exception $e) {
-            echo(" ERROR");
+            echo(" ERROR ");
     }
     }
 }
