@@ -1,0 +1,18 @@
+{
+    "name": "timlapov/lapov-timothee-poo",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "Timlapov\\LapovTimotheePoo\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Timothee LAPOV",
+            "email": "artemlapov@me.com"
+        }
+    ],
+    "require": {
+        "symfony/var-dumper": "^7.0"
+    }
+}
