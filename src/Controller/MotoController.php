@@ -3,12 +3,15 @@
 namespace Src\Controller;
 
 
+use Src\Manager\MotoManager;
+use Src\Entity\Moto;
 class MotoController
 {
     // Route: /moto
     public function getAll()
     {
         //Appel de template
+        $motos = (new MotoManager)->findAll();
         include(__DIR__ . "/../../Templates/moto/index.php");
     }
 
@@ -16,6 +19,7 @@ class MotoController
     public function getById($id)
     {
         echo "ROUTE: /moto/$id   (getById)";
+
     }
 
     // Route: /moto/$type

@@ -43,7 +43,7 @@ class Router
 
                             $motoController->edit($segments[2]);
                         } else {
-                            echo "ROUTE: /pizza/edit/ Bad Request: Missing ID";
+                            echo "ROUTE: /moto/edit/ Bad Request: Missing ID";
                         }
 
                         break;
