@@ -2,6 +2,7 @@
 include_once(__DIR__ . "/block/header.php");
 include_once(__DIR__ . "/block/navbar.php");
 ?>
+
 <div class="container mt-5">
         <div class="row">
             <?php foreach ($motos as $moto): ?>
@@ -23,7 +24,6 @@ include_once(__DIR__ . "/block/navbar.php");
             <?php endforeach; ?>
         </div>
     </div>
-
 
 
 <?php

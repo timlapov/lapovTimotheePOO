@@ -65,17 +65,20 @@ VALUES (:brand, :model, :type, :price, :image)"
     {
         try {
             $query = $this->getPdo()->prepare(
-                "UPDATE moto SET brand = :brand, model = :model, type = :type, price = :price, image = :image WHERE id = id"
+                "UPDATE moto SET brand = :brand, model = :model, type = :type, price = :price, image = :image WHERE id = :id"
             );
             $result = $query->execute([
+                ":id" => $moto->getId(),
                 ":brand" => $moto->getBrand(),
                 ":model" => $moto->getModel(),
                 ":type" => $moto->getType(),
                 ":price" => $moto->getPrice(),
                 ":image" => $moto->getImage()
             ]);
+            return $result;
         } catch (PDOException $e) {
             error_log("PDOException: " . $e->getMessage());
+            return false;
         }
     }
     //DELETE function

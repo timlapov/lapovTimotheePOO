@@ -3,7 +3,7 @@
 namespace Src\Entity;
 
 class Moto {
-    private int $id;
+    private ?int $id;
     private string $brand;
     private string $model;
     private string $type;
@@ -76,6 +76,13 @@ class Moto {
             echo("ERROR! Il n'existe pas de tableau");
             exit;
         }
-        return new self($array['brand'], $array['model'], $array['type'], $array['price'], $array['image'], $array['id'] ?? null);
+        return new self(
+            $array['brand'],
+            $array['model'],
+            $array['type'],
+            (float)$array['price'],
+            $array['image'],
+            isset($array['id']) ? (int)$array['id'] : null
+        );
     }
 }
